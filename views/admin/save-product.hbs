@@ -1,0 +1,66 @@
+<main>
+
+  <div class="card">
+    <div class="card-header">
+      Agregar Peliculas
+    </div>
+    <div class="card-body">
+
+      <form method="POST" action="{{#if editMode}}/admin/edit-product{{else}}/admin/add-product{{/if}}">
+        <div class="mb-3">
+          <label for="title" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="title" name="Title" value="{{#if editMode}}{{product.title}}{{/if}}" />
+
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="Description" id="description" rows="5">{{#if editMode}}{{product.description}}{{/if}}</textarea>
+        </div>
+       <div class="mb-3">
+                <label for="contact-type" class="form-label"
+                  >Status:</label
+                >
+                <select class="form-select" id="movies-status" name="status">
+                  <option value="{{#if editMode}}{{product.status}}{{/if}}" selected>
+                    Estado de la Pelicula:
+                  </option>
+                  <option value="Activo">Activo</option>
+                  <option value="Desactivado">Desactivado</option>
+                </select>
+              </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image Url:</label>
+          <input type="text" class="form-control" id="image" name="ImageUrl" value="{{#if editMode}}{{product.imageUrl}}{{/if}}" />
+
+        </div>
+        <div class="mb-3">
+                <label for="contact-type" class="form-label"
+                  >Género:</label
+                >
+                <select class="form-select" id="movies-genero" name="genero"> 
+                  <option value="{{#if editMode}}{{product.genero}}{{/if}}" selected>
+                    Género
+                  </option>
+                  <option value="Acción">Acción</option>
+                  <option value="Comedia">Comedia</option>
+                  <option value="Suspenso">Suspenso</option>
+                  <option value="Documentales">Documentales</option>
+                  <option value="Terror">Terror</option>
+                </select>
+              </div>
+        <div class="mb-3">
+        
+
+        {{#if editMode}}
+
+          <input type="hidden" name="ProductId" value="{{product.id}}">
+
+        {{/if}}
+
+        <button type="submit" class="btn btn-primary">{{#if editMode}}Update{{else}}Add{{/if}}</button>
+      </form>
+
+    </div>
+  </div>
+
+</main>
